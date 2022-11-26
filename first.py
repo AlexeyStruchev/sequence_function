@@ -1,4 +1,9 @@
-def get_nums(input_number_: int) -> list:
+def get_even_nums(input_number_: int) -> list:
+    """Create a sequence of even numbers from int number.
+
+    Input number can be positive and negative, but can't be equal zero.
+    Input number presents a number sequence from 0 to input number without even numbers.
+    """
     if input_number_ == 0:
         print("Input number can't be zero")
         return [0]
@@ -10,12 +15,14 @@ def get_nums(input_number_: int) -> list:
         return [number for number in input_number_ if number % 2 == 0]
 
 
-def function_result(expected_result, actual_result):
+def check_actual_result(expected_result, actual_result):
+    assert expected_result != 0, f'Input cannot be zero'
     assert expected_result == actual_result, f'Expected {expected_result}, got {actual_result}'
     assert expected_result is not None, f'Expected {expected_result}, got {actual_result}'
     assert expected_result is not [], f'Expected {expected_result}, got {actual_result}'
 
 
-function_result([0, 2, 4, 6, 8], get_nums(10))
-function_result([-4, -2], get_nums(-4))
-function_result([0], get_nums(0))
+check_actual_result([0, 2, 4, 6, 8], get_even_nums(10))
+check_actual_result([-4, -2], get_even_nums(-4))
+check_actual_result([0], get_even_nums(0))
+check_actual_result(0, get_even_nums(0))
